@@ -58,7 +58,7 @@ Page({
     for (var i = 0; i < showCount; i++) {
       objItem = {
         id: i + 1,
-        content: '课' + (i + 1).toString(),
+        content: '测试' + (i + 1).toString(),
         addTime: this.getStrDate(Date.parse(new Date()) / 1000),
         state: (i < 6) ? 2 : 1,//前6行显示为未完成
         txtStyle: ''
@@ -152,7 +152,7 @@ Page({
     });
     this.setBindDtInfo(this.data.todoTabId)
   },
-  //取消按钮事件
+  //字清空按钮事件
   cancelTodo: function() {
     this.setData({
       addShow: false,
@@ -184,7 +184,7 @@ Page({
     });
   },
   /**
-   * 类型选中事件(全部,已完成,未完成)
+   * 全部,已完成,未完成,详情
    */
   onChangeSelect: function(e) {
     var dtInfo = this.data.todoList;

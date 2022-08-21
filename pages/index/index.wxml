@@ -17,6 +17,7 @@
         <view class="{{(todoTabId=='tab1'?'listDivTypeSelected':'')}}" data-id="tab1" bindtap="onChangeSelect">全部</view>
         <view class="{{(todoTabId=='tab2'?'listDivTypeSelected':'')}}" data-id="tab2" bindtap="onChangeSelect">已完成</view>
         <view class="{{(todoTabId=='tab3'?'listDivTypeSelected':'')}}" data-id="tab3" bindtap="onChangeSelect">未完成</view>
+        <view class="{{(todoTabId=='tab4'?'listDivTypeSelected':'')}}" data-id="tab4" bindtap="onChangeSelect">详情</view>
       </view>
     </view>
     <view class="listDivContent">
