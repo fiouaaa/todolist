@@ -1,0 +1,17 @@
+{
+  "useExtendedLib": {
+    "weui": true
+},
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#F2D0E4",
+    "navigationBarTitleText": "fionatodolisttt",
+    "navigationBarTextStyle":"black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

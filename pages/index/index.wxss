@@ -1,0 +1,143 @@
+/**index.wxss**/
+.titlee{
+  color: rgb(241, 121, 211);
+  width: auto;
+  height: 30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family: fantasy;
+  letter-spacing: 3rpx;
+}
+
+.userinfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.addDiv {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: 999;
+}
+
+.addDivContent {
+  padding: 10px;
+}
+
+.addDivInput {
+  border: solid 1px gainsboro;
+  border-radius: 6px;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.weui-btn_cell weui-btn_cell-primary{
+  margin-right: 20px;
+}
+
+.hide {
+  display: none;
+}
+
+.listDivTop {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 96%;
+  border-bottom: 1px solid gainsboro;
+}
+
+.listDivType {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 60%;
+  color: #999;
+}
+
+.listDivTypeSelected {
+  color: #333;
+  font-weight: 600;
+}
+
+.listDivContent {
+  width: 100%;
+  color: #666;
+  margin: 0 auto;
+  padding: 40rpx 0;
+  position: absolute;
+  top: 150px;
+}
+
+.items {
+  width: 100%;
+}
+
+.listDivRow {
+  width: 98%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.listDivItem {
+  position: relative;
+  height: 80rpx;
+  line-height: 80rpx;
+  overflow: hidden;
+}
+
+.inner {
+  position: absolute;
+  top: 0;
+}
+
+.inner.txt {
+  width: 100%;
+  z-index: 5;
+  transition: left 0.2s ease-in-out;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: #F2D0E4;
+}
+
+.itemTime {
+  font-size: 12px;
+}
+
+.inner.del {
+  width: 60px;
+  text-align: center;
+  z-index: 4;
+  right: 0;
+  background-color: rgb(160, 201, 106);
+}
+
+.inner.finish {
+  width: 80px;
+  text-align: center;
+  z-index: 4;
+  right: 60px;
+  background-color: skyblue;
+}

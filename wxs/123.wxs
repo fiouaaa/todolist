@@ -1,0 +1,14 @@
+var sub =function(val) {
+  if (val == undefined || val.length == 0) {
+    return;
+  }
+  if (val.length > 10) {
+    return val.substring(0, 10) + "..."
+  } else {
+    return val;
+  }
+}
+
+module.exports={
+  sub:sub
+}

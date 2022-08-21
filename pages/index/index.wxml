@@ -1,0 +1,38 @@
+<!--index.wxml-->
+<wxs src="/wxs/123.wxs" module="tools"/>
+<text class="titlee">Welcome To Fiona's Todo!</text>
+<view>
+  <view class="userinfo">
+    <view>
+      <view class="addDivContent">
+        <input bindinput='bindAddText' placeholder="请输入todo!"  focus="{{inputFocus}}" value="{{addText}}" class="addDivInput" />
+        <view class="addDivButton">
+          <button class="weui-btn_cell weui-btn_cell-primary" class="addDivButtonMargin" bindtap="addTodo"  size="mini"><mp-icon icon="add2" color="black" size="{{25}}"></mp-icon></button>
+          <button bindtap="cancelTodo"  size="mini"><mp-icon icon="close" color="black" size="{{25}}"></mp-icon></button>
+        </view>
+      </view>
+    </view>
+    <view class="listDivTop">
+      <view class="listDivType">
+        <view class="{{(todoTabId=='tab1'?'listDivTypeSelected':'')}}" data-id="tab1" bindtap="onChangeSelect">全部</view>
+        <view class="{{(todoTabId=='tab2'?'listDivTypeSelected':'')}}" data-id="tab2" bindtap="onChangeSelect">已完成</view>
+        <view class="{{(todoTabId=='tab3'?'listDivTypeSelected':'')}}" data-id="tab3" bindtap="onChangeSelect">未完成</view>
+      </view>
+    </view>
+    <view class="listDivContent">
+      <view class="items">
+        <view wx:for="{{todoDtBind}}" wx:key="{{index}}" class="listDivItem">
+          <view bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" data-state="{{item.state}}" data-index="{{index}}" style="{{item.txtStyle}}" class="inner txt">
+            <view class="listDivRow">
+              <view>{{index+1}}.{{tools.sub(item.content)}}</view>
+              <view class="itemTime">{{item.addTime}}</view>
+            </view>
+
+          </view>
+          <view wx:if="{{item.state==2}}" data-index="{{index}}" bindtap="finishItem" class="inner finish">标记完成</view>
+          <view data-index="{{index}}" bindtap="delItem" class="inner del">删除</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
