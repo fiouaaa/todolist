@@ -26,50 +26,8 @@ Page({
       url: 'pages/logs/logs'
     })
   },
-  onShow: function() {
-    this.setData({
-      pageNum: 1
-    })
-    this.getBindDtInfo("loaDinggg");
-    this.setBindDtInfo(this.data.todoTabId);
-  },
-  /**
-   * 获取绑定数据
-   * @param msg:加载信息
-   */
-  getBindDtInfo: function(msg) {
-    wx.showLoading({
-      title: msg,
-    })
-    setTimeout(function() {
-      wx.hideLoading()
-    }, 2000)
-    var vNum = this.data.pageNum;
-    var count = vNum * this.data.pageSize;//页码乘以行数得到的理论条数
-    var showCount = 0;//显示条数
-    if (count <= this.data.totalCount) {
-      showCount = count;
-    } else {
-      showCount = this.data.totalCount;
-      vNum = vNum - 1;
-    }
-    let objItem = {};
-    let dtInfo = [];//创造数据
-    for (var i = 0; i < showCount; i++) {
-      objItem = {
-        id: i + 1,
-        content: '测试' + (i + 1).toString(),
-        addTime: this.getStrDate(Date.parse(new Date()) / 1000),
-        state: (i < 6) ? 2 : 1,//前6行显示为未完成
-        txtStyle: ''
-      }
-      dtInfo.push(objItem)
-    }
-    this.setData({
-      todoList: dtInfo,
-      pageNum: vNum
-    });
-  },
+
+
   /**
    * 页面上拉触底事件
    */
@@ -124,6 +82,38 @@ Page({
   },
   //确定新增按钮事件
   addTodo: function() {
+    if (this.data.inputValue != '') {
+      //调用API向本地缓存存入数据
+      let allsearch = wx.getStorageSync('searchData') || []
+      allsearch.push(this.data.inputValue)
+      wx.setStorageSync('searchData', allsearch)
+ 
+      this.setData({
+        searchData: allsearch
+      })
+      console.log(allsearch)
+    } 
+    //异步接口    
+    wx.setStorage({
+      key: 'key1',
+      data: 'todoList',
+      success:function(){
+          console.log("写入value1成功！")     
+      },fail:function(){
+          console.log("写入value1失败！")     
+      }
+    })
+
+
+    //同步接口 只有1执行成功才会执行2或3
+    try{
+      wx.setStorageSync("key", "todoList")      //1
+      console.log("写入value2成功！")          //2
+    }catch(e){
+      console.log("写入value2失败！")         //3
+    }
+
+
     var content = this.data.addText;
     if (content.trim() == "") {
       wx.showToast({
@@ -163,7 +153,7 @@ Page({
   //设置绑定数据集合
   setBindDtInfo: function(vTabId) {
     var dtInfo = [];
-    if (vTabId == "tab1") {
+    if (vTabId == "tab1"||vTabId == "tab") {
       dtInfo = this.data.todoList;
     } else if (vTabId == "tab2") {
       for (var i = 0; i < this.data.todoList.length; i++) {
@@ -303,7 +293,48 @@ Page({
       duration: 2000
     })
   },
+  onLoad: function () {
+    //获取缓存数据，更新初始数据
+    let allsearch = wx.getStorageSync('searchData')
+    this.setData({
+      searchData: allsearch
+    })
+  },
   onLoad: function() {
+    let allsearch = wx.getStorageSync('searchData')
+    this.setData({
+      searchData: allsearch
+    })
+    
+        //异步接口    
+        wx.getStorage({
+          key: 'key1',
+          success: function (res) {
+            // 异步接口在success回调才能拿到返回值
+            var todoList = res.data
+          },
+          fail: function () {
+            console.log('读取key1失败')
+          }
+    
+        })
+    
+    
+        //同步接口
+        try {
+          // 同步接口立即返回值
+          var todoList = wx.getStorageSync('key2')
+        } catch (e) {
+          console.log('读取key2失败')
+        }
+    
+    try{
+      wx.setStorageSync('key', 'todoList')
+      console.log('写入value成功')
+    }catch (e) {
+      console.log('写入value发生错误')
+    }
+    
 
     if (app.globalData.userInfo) {
       this.setData({
@@ -340,4 +371,5 @@ Page({
       hasUserInfo: true
     })
   }
+  
 })
