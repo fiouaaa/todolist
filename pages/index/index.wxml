@@ -37,3 +37,6 @@
     </view>
   </view>
 </view>
+<view class="water_top" style="pointer-events: none;">
+    <view class="water-text" wx:for="{{50}}">{{watermarkText}}</view>
+</view>

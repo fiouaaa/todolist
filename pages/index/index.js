@@ -1,8 +1,16 @@
 //index.js
 //获取应用实例
 const app = getApp()
+// watermark.js
 
 Page({
+  attached() {
+    // 在组件实例进入页面节点树时执行
+    // this.drowsyUserinfo()
+    this.setData({
+      watermarkText: 'Fiona'
+    })
+  },
   data: {
     addShow: false, //添加输入面板是否显示
     inputFocus: false,//是否选中
@@ -19,6 +27,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
+    
   },
   //事件处理函数
   bindViewTap: function() {
