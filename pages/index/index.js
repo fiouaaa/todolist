@@ -1,16 +1,8 @@
 //index.js
 //获取应用实例
 const app = getApp()
-// watermark.js
 
 Page({
-  attached() {
-    // 在组件实例进入页面节点树时执行
-    // this.drowsyUserinfo()
-    this.setData({
-      watermarkText: 'Fiona'
-    })
-  },
   data: {
     addShow: false, //添加输入面板是否显示
     inputFocus: false,//是否选中
@@ -27,7 +19,6 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
-    
   },
   //事件处理函数
   bindViewTap: function() {
@@ -35,7 +26,6 @@ Page({
       url: 'pages/logs/logs'
     })
   },
-
 
   /**
    * 页面上拉触底事件
@@ -162,7 +152,7 @@ Page({
   //设置绑定数据集合
   setBindDtInfo: function(vTabId) {
     var dtInfo = [];
-    if (vTabId == "tab1"||vTabId == "tab") {
+    if (vTabId == "tab1"||"tab4") {
       dtInfo = this.data.todoList;
     } else if (vTabId == "tab2") {
       for (var i = 0; i < this.data.todoList.length; i++) {
